@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2020 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="umg.orm.Paciente" optimistic-lock="version" schema="CLINICABD" table="PACIENTE">
+    <id name="pacPaciente" type="big_decimal">
+      <column name="PAC_PACIENTE" precision="22" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="pacNoCarnet" type="big_decimal">
+      <column name="PAC_NO_CARNET" precision="22" scale="0"/>
+    </property>
+    <property name="pacPersona" type="string">
+      <column length="200" name="PAC_PERSONA"/>
+    </property>
+    <property name="pacEstado" type="string">
+      <column length="200" name="PAC_ESTADO"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="personas" table="PERSONA">
+      <key>
+        <column name="PACIENTE_PAC_PACIENTE" not-null="true" precision="22" scale="0" unique="true"/>
+      </key>
+      <one-to-many class="umg.orm.Persona"/>
+    </set>
+  </class>
+</hibernate-mapping>

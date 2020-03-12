@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2020 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="umg.orm.Cliente" optimistic-lock="version" schema="CLINICABD" table="CLIENTE">
+    <composite-id class="umg.orm.ClienteId" name="id">
+      <key-property name="cliCliente" type="big_decimal">
+        <column name="CLI_CLIENTE" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="facturaFacFactura" type="big_decimal">
+        <column name="FACTURA_FAC_FACTURA" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="facturaCitaCita" type="big_decimal">
+        <column name="FACTURA_CITA_CITA" precision="22" scale="0"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="umg.orm.Factura" fetch="select" insert="false" name="factura" update="false">
+      <column name="FACTURA_FAC_FACTURA" not-null="true" precision="22" scale="0"/>
+      <column name="FACTURA_CITA_CITA" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <property name="cliNit" type="string">
+      <column length="200" name="CLI_NIT"/>
+    </property>
+    <property name="cliNombre" type="string">
+      <column length="200" name="CLI_NOMBRE"/>
+    </property>
+    <property name="cliDireccion" type="string">
+      <column length="200" name="CLI_DIRECCION"/>
+    </property>
+    <property name="cliTelefono" type="big_decimal">
+      <column name="CLI_TELEFONO" precision="22" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

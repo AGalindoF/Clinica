@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2020 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="umg.orm.Persona" optimistic-lock="version" schema="CLINICABD" table="PERSONA">
+    <composite-id class="umg.orm.PersonaId" name="id">
+      <key-property name="perPersona" type="big_decimal">
+        <column name="PER_PERSONA" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="pacientePacPaciente" type="big_decimal">
+        <column name="PACIENTE_PAC_PACIENTE" precision="22" scale="0"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="umg.orm.Paciente" fetch="select" insert="false" name="paciente" update="false">
+      <column name="PACIENTE_PAC_PACIENTE" not-null="true" precision="22" scale="0" unique="true"/>
+    </many-to-one>
+    <property name="perNombre" type="string">
+      <column length="200" name="PER_NOMBRE"/>
+    </property>
+    <property name="perApellido" type="string">
+      <column length="200" name="PER_APELLIDO"/>
+    </property>
+    <property name="perFechaNacio" type="date">
+      <column length="7" name="PER_FECHA_NACIO"/>
+    </property>
+    <property name="perTelefono" type="big_decimal">
+      <column name="PER_TELEFONO" precision="22" scale="0"/>
+    </property>
+    <property name="perDireccion" type="string">
+      <column length="200" name="PER_DIRECCION"/>
+    </property>
+    <property name="perCorreo" type="string">
+      <column length="200" name="PER_CORREO"/>
+    </property>
+    <property name="perEstado" type="string">
+      <column length="200" name="PER_ESTADO"/>
+    </property>
+    <property name="perLogin" type="string">
+      <column length="200" name="PER_LOGIN"/>
+    </property>
+    <property name="perClave" type="string">
+      <column length="200" name="PER_CLAVE"/>
+    </property>
+    <property name="perNit" type="string">
+      <column length="200" name="PER_NIT"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="empleados" table="EMPLEADO">
+      <key>
+        <column name="PERSONA_PER_PERSONA" not-null="true" precision="22" scale="0"/>
+        <column name="PERSONA_PACIENTE_PAC_PACIENTE" not-null="true" precision="22" scale="0"/>
+      </key>
+      <one-to-many class="umg.orm.Empleado"/>
+    </set>
+  </class>
+</hibernate-mapping>

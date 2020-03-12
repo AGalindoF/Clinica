@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2020 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="umg.orm.PedidoDetalle" optimistic-lock="version" schema="CLINICABD" table="PEDIDO_DETALLE">
+    <composite-id class="umg.orm.PedidoDetalleId" name="id">
+      <key-property name="peddPedde" type="big_decimal">
+        <column name="PEDD_PEDDE" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="productoProProducto" type="big_decimal">
+        <column name="PRODUCTO_PRO_PRODUCTO" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="pedidoPedPedido" type="big_decimal">
+        <column name="PEDIDO_PED_PEDIDO" precision="22" scale="0"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="umg.orm.Pedido" fetch="select" insert="false" name="pedido" update="false">
+      <column name="PEDIDO_PED_PEDIDO" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <many-to-one class="umg.orm.Producto" fetch="select" insert="false" name="producto" update="false">
+      <column name="PRODUCTO_PRO_PRODUCTO" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <property name="peddProducto" type="big_decimal">
+      <column name="PEDD_PRODUCTO" precision="22" scale="0"/>
+    </property>
+    <property name="peddCantidad" type="big_decimal">
+      <column name="PEDD_CANTIDAD" precision="22" scale="0"/>
+    </property>
+    <property name="peddValor" type="big_decimal">
+      <column name="PEDD_VALOR" precision="22" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

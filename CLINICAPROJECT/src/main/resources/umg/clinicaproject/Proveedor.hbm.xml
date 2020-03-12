@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2020 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="umg.orm.Proveedor" optimistic-lock="version" schema="CLINICABD" table="PROVEEDOR">
+    <composite-id class="umg.orm.ProveedorId" name="id">
+      <key-property name="provProveedor" type="big_decimal">
+        <column name="PROV_PROVEEDOR" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="productoProveedorPropProprov" type="big_decimal">
+        <column name="PRODUCTO_PROVEEDOR_PROP_PROPROV" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="productoProveedorProductoProProducto" type="big_decimal">
+        <column name="PRODUCTO_PROVEEDOR_PRODUCTO_PRO_PRODUCTO" precision="22" scale="0"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="umg.orm.ProductoProveedor" fetch="select" insert="false" name="productoProveedor" update="false">
+      <column name="PRODUCTO_PROVEEDOR_PROP_PROPROV" not-null="true" precision="22" scale="0"/>
+      <column name="PRODUCTO_PROVEEDOR_PRODUCTO_PRO_PRODUCTO" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <property name="provNombre" type="string">
+      <column length="200" name="PROV_NOMBRE"/>
+    </property>
+    <property name="provDescripcion" type="string">
+      <column length="200" name="PROV_DESCRIPCION"/>
+    </property>
+    <property name="provTelefono" type="big_decimal">
+      <column name="PROV_TELEFONO" precision="22" scale="0"/>
+    </property>
+    <property name="provDireccion" type="string">
+      <column length="200" name="PROV_DIRECCION"/>
+    </property>
+    <property name="provEmpresa" type="string">
+      <column length="200" name="PROV_EMPRESA"/>
+    </property>
+    <property name="provCorreo" type="string">
+      <column length="200" name="PROV_CORREO"/>
+    </property>
+    <property name="provNit" type="string">
+      <column length="200" name="PROV_NIT"/>
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2020 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="umg.orm.Tratamiento" optimistic-lock="version" schema="CLINICABD" table="TRATAMIENTO">
+    <composite-id class="umg.orm.TratamientoId" name="id">
+      <key-property name="traTratamiento" type="big_decimal">
+        <column name="TRA_TRATAMIENTO" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="citaCitaCita" type="big_decimal">
+        <column name="CITA_CITA_CITA" precision="22" scale="0"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="umg.orm.Cita" fetch="select" insert="false" name="cita" update="false">
+      <column name="CITA_CITA_CITA" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <property name="traNombre" type="string">
+      <column length="200" name="TRA_NOMBRE"/>
+    </property>
+    <property name="traDescripcion" type="string">
+      <column length="200" name="TRA_DESCRIPCION"/>
+    </property>
+    <property name="traCosto" type="big_decimal">
+      <column name="TRA_COSTO" precision="22" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

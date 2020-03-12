@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2020 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="umg.orm.Puesto" optimistic-lock="version" schema="CLINICABD" table="PUESTO">
+    <id name="puePuesto" type="big_decimal">
+      <column name="PUE_PUESTO" precision="22" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="umg.orm.Departamento" fetch="select" name="departamento">
+      <column name="DEPARTAMENTO_DEP_DEPARTAMENTO" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <many-to-one class="umg.orm.Empleado" fetch="select" name="empleado">
+      <column name="EMPLEADO_EMP_EMPLEADO" not-null="true" precision="22" scale="0"/>
+      <column name="EMPLEADO_PERSONA_PER_PERSONA" not-null="true" precision="22" scale="0"/>
+      <column name="EMPLEADO_PERSONA_PACIENTE_PAC_PACIENTE" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <property name="pueDepartam" type="string">
+      <column length="200" name="PUE_DEPARTAM"/>
+    </property>
+    <property name="pueNombre" type="string">
+      <column length="200" name="PUE_NOMBRE"/>
+    </property>
+    <property name="pueDescipcion" type="string">
+      <column length="200" name="PUE_DESCIPCION"/>
+    </property>
+    <property name="puePuesto1" type="big_decimal">
+      <column name="PUE_PUESTO1" not-null="true" precision="22" scale="0"/>
+    </property>
+    <property name="puePuesto2" type="big_decimal">
+      <column name="PUE_PUESTO2" not-null="true" precision="22" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

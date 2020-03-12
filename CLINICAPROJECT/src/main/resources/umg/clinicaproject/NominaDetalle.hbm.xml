@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2020 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="umg.orm.NominaDetalle" optimistic-lock="version" schema="CLINICABD" table="NOMINA_DETALLE">
+    <id name="nomdNominad" type="big_decimal">
+      <column name="NOMD_NOMINAD" precision="22" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="umg.orm.Empleado" fetch="select" name="empleado">
+      <column name="EMPLEADO_EMP_EMPLEADO" not-null="true" precision="22" scale="0"/>
+      <column name="EMPLEADO_PERSONA_PER_PERSONA" not-null="true" precision="22" scale="0"/>
+      <column name="EMPLEADO_PERSONA_PACIENTE_PAC_PACIENTE" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <many-to-one class="umg.orm.Nomina" fetch="select" name="nomina">
+      <column name="NOMINA_NOM_NOMINA" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <property name="nomdNomina" type="big_decimal">
+      <column name="NOMD_NOMINA" precision="22" scale="0"/>
+    </property>
+    <property name="nomdEmpleado" type="big_decimal">
+      <column name="NOMD_EMPLEADO" precision="22" scale="0"/>
+    </property>
+    <property name="nomdDiasLabo" type="big_decimal">
+      <column name="NOMD_DIAS_LABO" precision="22" scale="0"/>
+    </property>
+    <property name="nomdHorasx" type="big_decimal">
+      <column name="NOMD_HORASX" precision="22" scale="0"/>
+    </property>
+    <property name="nomdSalario" type="big_decimal">
+      <column name="NOMD_SALARIO" precision="22" scale="0"/>
+    </property>
+    <property name="nomdNominad2" type="big_decimal">
+      <column name="NOMD_NOMINAD2" not-null="true" precision="22" scale="0"/>
+    </property>
+    <property name="puePuesto" type="big_decimal">
+      <column name="PUE_PUESTO" not-null="true" precision="22" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

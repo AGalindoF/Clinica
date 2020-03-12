@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2020 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="umg.orm.Cita" optimistic-lock="version" schema="CLINICABD" table="CITA">
+    <id name="citaCita" type="big_decimal">
+      <column name="CITA_CITA" precision="22" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="citaFecha" type="date">
+      <column length="7" name="CITA_FECHA"/>
+    </property>
+    <property name="citaPaciente" type="big_decimal">
+      <column name="CITA_PACIENTE" precision="22" scale="0"/>
+    </property>
+    <property name="citaObservacion" type="string">
+      <column length="200" name="CITA_OBSERVACION"/>
+    </property>
+    <property name="citaTratamiento" type="string">
+      <column length="200" name="CITA_TRATAMIENTO"/>
+    </property>
+    <property name="citaHora" type="date">
+      <column length="7" name="CITA_HORA"/>
+    </property>
+    <property name="citaEstado" type="string">
+      <column length="200" name="CITA_ESTADO"/>
+    </property>
+    <property name="citaMedico" type="string">
+      <column length="200" name="CITA_MEDICO"/>
+    </property>
+    <property name="citaHoraconsulta" type="date">
+      <column length="7" name="CITA_HORACONSULTA"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="tratamientos" table="TRATAMIENTO">
+      <key>
+        <column name="CITA_CITA_CITA" not-null="true" precision="22" scale="0"/>
+      </key>
+      <one-to-many class="umg.orm.Tratamiento"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="facturas" table="FACTURA">
+      <key>
+        <column name="CITA_CITA_CITA" not-null="true" precision="22" scale="0"/>
+      </key>
+      <one-to-many class="umg.orm.Factura"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="citaProductos" table="CITA_PRODUCTO">
+      <key>
+        <column name="CITA_CITA_CITA" not-null="true" precision="22" scale="0"/>
+      </key>
+      <one-to-many class="umg.orm.CitaProducto"/>
+    </set>
+  </class>
+</hibernate-mapping>

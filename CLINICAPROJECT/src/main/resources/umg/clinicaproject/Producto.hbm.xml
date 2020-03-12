@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2020 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="umg.orm.Producto" optimistic-lock="version" schema="CLINICABD" table="PRODUCTO">
+    <id name="proProducto" type="big_decimal">
+      <column name="PRO_PRODUCTO" precision="22" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="proNombre" type="string">
+      <column length="200" name="PRO_NOMBRE"/>
+    </property>
+    <property name="proDescripcio" type="string">
+      <column length="200" name="PRO_DESCRIPCIO"/>
+    </property>
+    <property name="proPrecio" type="big_decimal">
+      <column name="PRO_PRECIO" precision="22" scale="0"/>
+    </property>
+    <property name="proCosto" type="big_decimal">
+      <column name="PRO_COSTO" precision="22" scale="0"/>
+    </property>
+    <property name="proTipo" type="string">
+      <column length="200" name="PRO_TIPO"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="facturaDetalles" table="FACTURA_DETALLE">
+      <key>
+        <column name="PRODUCTO_PRO_PRODUCTO" not-null="true" precision="22" scale="0"/>
+      </key>
+      <one-to-many class="umg.orm.FacturaDetalle"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="productoProveedors" table="PRODUCTO_PROVEEDOR">
+      <key>
+        <column name="PRODUCTO_PRO_PRODUCTO" not-null="true" precision="22" scale="0"/>
+      </key>
+      <one-to-many class="umg.orm.ProductoProveedor"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="pedidoDetalles" table="PEDIDO_DETALLE">
+      <key>
+        <column name="PRODUCTO_PRO_PRODUCTO" not-null="true" precision="22" scale="0"/>
+      </key>
+      <one-to-many class="umg.orm.PedidoDetalle"/>
+    </set>
+  </class>
+</hibernate-mapping>

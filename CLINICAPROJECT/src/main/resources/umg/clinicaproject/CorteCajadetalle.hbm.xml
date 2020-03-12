@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2020 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="umg.orm.CorteCajadetalle" optimistic-lock="version" schema="CLINICABD" table="CORTE_CAJADETALLE">
+    <composite-id class="umg.orm.CorteCajadetalleId" name="id">
+      <key-property name="cordCajade" type="big_decimal">
+        <column name="CORD_CAJADE" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="facturaFacFactura" type="big_decimal">
+        <column name="FACTURA_FAC_FACTURA" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="facturaCitaCita" type="big_decimal">
+        <column name="FACTURA_CITA_CITA" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="corteCajaCorCorcaja" type="big_decimal">
+        <column name="CORTE_CAJA_COR_CORCAJA" precision="22" scale="0"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="umg.orm.CorteCaja" fetch="select" insert="false" name="corteCaja" update="false">
+      <column name="CORTE_CAJA_COR_CORCAJA" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <many-to-one class="umg.orm.Factura" fetch="select" insert="false" name="factura" update="false">
+      <column name="FACTURA_FAC_FACTURA" not-null="true" precision="22" scale="0"/>
+      <column name="FACTURA_CITA_CITA" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <property name="cordCortecaja" type="big_decimal">
+      <column name="CORD_CORTECAJA" precision="22" scale="0"/>
+    </property>
+    <property name="cordFactura" type="big_decimal">
+      <column name="CORD_FACTURA" precision="22" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

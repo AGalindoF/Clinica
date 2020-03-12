@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2020 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="umg.orm.CitaProducto" optimistic-lock="version" schema="CLINICABD" table="CITA_PRODUCTO">
+    <composite-id class="umg.orm.CitaProductoId" name="id">
+      <key-property name="citpCitaproduc" type="big_decimal">
+        <column name="CITP_CITAPRODUC" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="citaCitaCita" type="big_decimal">
+        <column name="CITA_CITA_CITA" precision="22" scale="0"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="umg.orm.Cita" fetch="select" insert="false" name="cita" update="false">
+      <column name="CITA_CITA_CITA" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <property name="citpCita" type="big_decimal">
+      <column name="CITP_CITA" precision="22" scale="0"/>
+    </property>
+    <property name="citpProducto" type="string">
+      <column length="200" name="CITP_PRODUCTO"/>
+    </property>
+  </class>
+</hibernate-mapping>

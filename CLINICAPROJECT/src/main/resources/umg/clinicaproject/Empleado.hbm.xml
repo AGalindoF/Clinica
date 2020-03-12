@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/03/2020 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="umg.orm.Empleado" optimistic-lock="version" schema="CLINICABD" table="EMPLEADO">
+    <composite-id class="umg.orm.EmpleadoId" name="id">
+      <key-property name="empEmpleado" type="big_decimal">
+        <column name="EMP_EMPLEADO" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="personaPerPersona" type="big_decimal">
+        <column name="PERSONA_PER_PERSONA" precision="22" scale="0"/>
+      </key-property>
+      <key-property name="personaPacientePacPaciente" type="big_decimal">
+        <column name="PERSONA_PACIENTE_PAC_PACIENTE" precision="22" scale="0"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="umg.orm.Empleado" fetch="select" name="empleado">
+      <column name="EMPLEADO_EMP_EMPLEADO" not-null="true" precision="22" scale="0"/>
+      <column name="EMPLEADO_PERSONA_PER_PERSONA" not-null="true" precision="22" scale="0"/>
+      <column name="EMPLEADO_PERSONA_PACIENTE_PAC_PACIENTE" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <many-to-one class="umg.orm.Persona" fetch="select" insert="false" name="persona" update="false">
+      <column name="PERSONA_PER_PERSONA" not-null="true" precision="22" scale="0"/>
+      <column name="PERSONA_PACIENTE_PAC_PACIENTE" not-null="true" precision="22" scale="0"/>
+    </many-to-one>
+    <property name="empPersona" type="big_decimal">
+      <column name="EMP_PERSONA" precision="22" scale="0"/>
+    </property>
+    <property name="empFechaIngreso" type="date">
+      <column length="7" name="EMP_FECHA_INGRESO"/>
+    </property>
+    <property name="empPuesto" type="string">
+      <column length="200" name="EMP_PUESTO"/>
+    </property>
+    <property name="empSalario" type="big_decimal">
+      <column name="EMP_SALARIO" precision="22" scale="0"/>
+    </property>
+    <property name="empJefe" type="big_decimal">
+      <column name="EMP_JEFE" precision="22" scale="0"/>
+    </property>
+    <property name="empEstado" type="string">
+      <column length="200" name="EMP_ESTADO"/>
+    </property>
+    <property name="puePuesto" type="big_decimal">
+      <column name="PUE_PUESTO" precision="22" scale="0"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="empleados" table="EMPLEADO">
+      <key>
+        <column name="EMPLEADO_EMP_EMPLEADO" not-null="true" precision="22" scale="0"/>
+        <column name="EMPLEADO_PERSONA_PER_PERSONA" not-null="true" precision="22" scale="0"/>
+        <column name="EMPLEADO_PERSONA_PACIENTE_PAC_PACIENTE" not-null="true" precision="22" scale="0"/>
+      </key>
+      <one-to-many class="umg.orm.Empleado"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="nominaDetalles" table="NOMINA_DETALLE">
+      <key>
+        <column name="EMPLEADO_EMP_EMPLEADO" not-null="true" precision="22" scale="0"/>
+        <column name="EMPLEADO_PERSONA_PER_PERSONA" not-null="true" precision="22" scale="0"/>
+        <column name="EMPLEADO_PERSONA_PACIENTE_PAC_PACIENTE" not-null="true" precision="22" scale="0"/>
+      </key>
+      <one-to-many class="umg.orm.NominaDetalle"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="puestos" table="PUESTO">
+      <key>
+        <column name="EMPLEADO_EMP_EMPLEADO" not-null="true" precision="22" scale="0"/>
+        <column name="EMPLEADO_PERSONA_PER_PERSONA" not-null="true" precision="22" scale="0"/>
+        <column name="EMPLEADO_PERSONA_PACIENTE_PAC_PACIENTE" not-null="true" precision="22" scale="0"/>
+      </key>
+      <one-to-many class="umg.orm.Puesto"/>
+    </set>
+  </class>
+</hibernate-mapping>
